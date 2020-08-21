@@ -40,6 +40,7 @@ Dijkstra::~Dijkstra() {
     delete [] this->sum_node;
     delete [] this->visited;
     delete [] this->prev_vertex;
+    delete [] this->coordinates;
 }
 
 void Dijkstra::dijkstra_algo() {
