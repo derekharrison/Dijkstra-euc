@@ -98,17 +98,7 @@ void populate_adj_and_weight(bool** adj_mat, euc_c* coordinates, float** weight_
         coordinates[i].y = rand_num_y * max_coordinates;
     }
 
-    for(int j = 0; j < size_graph; ++j) {
-    	float rand_num = (float) rand() / RAND_MAX;
-    	if(0 != j) {
-    	    adj_mat[j][0] = adj_mat[0][j] = rand_num > (1 - 0.05);
-            if(adj_mat[0][j]) {
-                weight_mat[j][0] = weight_mat[0][j] = sqrt((coordinates[0].x - coordinates[j].x)*(coordinates[0].x - coordinates[j].x) +
-                                                           (coordinates[0].y - coordinates[j].y)*(coordinates[0].y - coordinates[j].y));
-            }
-    	}
-    }
-    for(int i = 1; i < size_graph; ++i)
+    for(int i = 0; i < size_graph; ++i)
         for(int j = i; j < size_graph; ++j) {
             float rand_num = (float) rand() / RAND_MAX;
             if(i != j) {
