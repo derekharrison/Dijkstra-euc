@@ -20,7 +20,10 @@ def animate(i):
     ax = plt.scatter(c_x, c_y, s=10, c='green')
     X = (start_x[i], end_x[i])
     Y = (start_y[i], end_y[i])
+    dx = end_x[i] - start_x[i]
+    dy = end_y[i] - start_y[i]
     cont = plt.plot(X, Y)
+    #cont = plt.arrow(start_x[i], start_y[i], dx, dy, head_width = 0.15, length_includes_head = True)
 
     return cont
 
