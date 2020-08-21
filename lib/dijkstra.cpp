@@ -48,6 +48,7 @@ void Dijkstra::dijkstra_algo() {
     int it_counter = 0;
     FILE *file_ptr = fopen(file_name, "w");
     bool unvisited_is_empty = Dijkstra::check_unvisited();
+    /* Main iteration loop */
     while(unvisited_is_empty == false) {
         for(int node = 0; node < this->size_graph; ++node) {
             if(is_connected(current_node, node) && node_not_visited(node) && curr_sum_greater(current_node, node)) {
@@ -58,18 +59,19 @@ void Dijkstra::dijkstra_algo() {
 
         current_node = Dijkstra::update_curr_node();
         int parent_node = this->prev_vertex[current_node];
-        printf("parent node: %i, current node: %i\n", parent_node, current_node);
-        fprintf(file_ptr, "%i %f %f %i %f %f %f %f %f\n", parent_node,
-                                                    this->coordinates[parent_node].x,
-                                                    this->coordinates[parent_node].y,
-                                                    current_node,
-                                                    this->coordinates[current_node].x,
-                                                    this->coordinates[current_node].y,
-                                                    weight_mat[parent_node][current_node],
-                                                    this->coordinates[it_counter].x,
-                                                    this->coordinates[it_counter].y);
-
         this->visited[current_node] = true;
+
+        /* Export data to file */
+        fprintf(file_ptr, "%i %f %f %i %f %f %f %f %f\n", parent_node,
+                                                          this->coordinates[parent_node].x,
+                                                          this->coordinates[parent_node].y,
+                                                          current_node,
+                                                          this->coordinates[current_node].x,
+                                                          this->coordinates[current_node].y,
+                                                          weight_mat[parent_node][current_node],
+                                                          this->coordinates[it_counter].x,
+                                                          this->coordinates[it_counter].y);
+
         unvisited_is_empty = Dijkstra::check_unvisited();
         it_counter++;
         if(it_counter > this->size_graph + 2) {
