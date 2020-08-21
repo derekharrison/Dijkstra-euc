@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
     int* prev_vertex = new int[size_graph];
     euc_c* coordinates = new euc_c[size_graph];
 
-    /* Populate adjancy and weight matrices with random data */
+    /* Populate adjancy and weight matrices and coordinates with random data */
     populate_adj_and_weight(adj_mat, coordinates, weight_mat, size_graph, density_graph);
 
     /* Create Dijkstra algorithm object */
