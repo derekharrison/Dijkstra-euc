@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
     delete_float2D(weight_mat, size_graph);
     delete [] distance_from_start;
     delete [] prev_vertex;
+    delete [] coordinates;
 
     return 0;
 }
