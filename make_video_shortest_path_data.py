@@ -17,7 +17,7 @@ print(size(start_vertex))
 def animate(i):
     ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
     print(i)
-    #ax = plt.scatter(c_x, c_y, s=10, c='green')
+    ax = plt.scatter(c_x, c_y, s=10, c='green')
     X = (start_x[i], end_x[i])
     Y = (start_y[i], end_y[i])
     cont = plt.plot(X, Y)

@@ -15,7 +15,7 @@
 int main(int argc, char* argv[])
 {
     int size_graph = 500;
-    float density_graph = 0.1;
+    float density_graph = 0.05;
     bool** adj_mat = bool2D(size_graph);
     float** weight_mat = float2D(size_graph);
     float* distance_from_start = new float[size_graph];
@@ -27,12 +27,6 @@ int main(int argc, char* argv[])
 
     /* Create Dijkstra algorithm object */
     Dijkstra myg(adj_mat, coordinates, weight_mat, size_graph);
-
-    /* Print adjancy matrix */
-//    myg.print_adj_mat();
-
-    /* Print weight matrix */
-//    myg.print_weight_mat();
 
     /* Execute Dijkstra algorithm */
     myg.dijkstra_algo();
