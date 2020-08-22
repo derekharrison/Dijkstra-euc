@@ -62,15 +62,13 @@ void Dijkstra::dijkstra_algo() {
         this->visited[current_node] = true;
 
         /* Export data to file */
-        fprintf(file_ptr, "%i %f %f %i %f %f %f %f %f\n", parent_node,
-                                                          this->coordinates[parent_node].x,
-                                                          this->coordinates[parent_node].y,
-                                                          current_node,
-                                                          this->coordinates[current_node].x,
-                                                          this->coordinates[current_node].y,
-                                                          weight_mat[parent_node][current_node],
-                                                          this->coordinates[it_counter].x,
-                                                          this->coordinates[it_counter].y);
+        fprintf(file_ptr, "%i %f %f %i %f %f %f\n", parent_node,
+                                                    this->coordinates[parent_node].x,
+                                                    this->coordinates[parent_node].y,
+                                                    current_node,
+                                                    this->coordinates[current_node].x,
+                                                    this->coordinates[current_node].y,
+                                                    weight_mat[parent_node][current_node]);
 
         unvisited_is_empty = Dijkstra::check_unvisited();
         it_counter++;

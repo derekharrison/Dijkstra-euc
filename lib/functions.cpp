@@ -5,12 +5,15 @@
  *      Author: d-w-h
  */
 
+#include <iostream>
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
 
 #include "../inc/functions.hpp"
 #include "../inc/user_types.hpp"
+
+const char* coordinates_file = "graph_coordinates.txt";
 
 bool** bool2D(const int size) {
     bool** p = new bool*[size];
@@ -88,6 +91,7 @@ void init_coordinates(euc_c* coordinates, euc_c* coordinates_ref, int size_graph
 
 void populate_adj_and_weight(bool** adj_mat, euc_c* coordinates, float** weight_mat, int size_graph, float density) {
     init_adj_and_weight(adj_mat, weight_mat, size_graph);
+    FILE *file_ptr = fopen(coordinates_file, "w");
 
     srand(time(NULL));
     float max_coordinates = 10.0;
@@ -96,7 +100,11 @@ void populate_adj_and_weight(bool** adj_mat, euc_c* coordinates, float** weight_
         float rand_num_y = (float) rand() / RAND_MAX;
         coordinates[i].x = rand_num_x * max_coordinates;
         coordinates[i].y = rand_num_y * max_coordinates;
+        /* Export coordinates to file */
+        fprintf(file_ptr, "%f %f\n", coordinates[i].x, coordinates[i].y);
     }
+
+    fclose(file_ptr);
 
     for(int i = 0; i < size_graph; ++i)
         for(int j = i; j < size_graph; ++j) {

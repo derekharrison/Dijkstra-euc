@@ -6,7 +6,8 @@ import time
 
 start_time = time.time()
 
-start_vertex, start_x, start_y, end_vertex, end_x, end_y, weight, c_x, c_y = np.genfromtxt(r'shortest_path_data.txt', unpack=True)
+coordinates_x, coordinates_y = np.genfromtxt(r'graph_coordinates.txt', unpack=True)
+start_vertex, start_x, start_y, end_vertex, end_x, end_y, weight = np.genfromtxt(r'shortest_path_data.txt', unpack=True)
 
 plt.rcParams['animation.ffmpeg_path']='C:/Users/d-w-h/Downloads/ffmpeg-20200818-1c7e55d-win64-static/ffmpeg-20200818-1c7e55d-win64-static/bin/ffmpeg.exe'
 writer=manimation.FFMpegWriter(bitrate=20000, fps=15)
@@ -17,7 +18,7 @@ print(size(start_vertex))
 def animate(i):
     ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
     print(i)
-    ax = plt.scatter(c_x, c_y, s=10, c='green')
+    ax = plt.scatter(coordinates_x, coordinates_y, s=10, c='green')
     X = (start_x[i], end_x[i])
     Y = (start_y[i], end_y[i])
     dx = end_x[i] - start_x[i]
