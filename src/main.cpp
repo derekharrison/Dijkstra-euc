@@ -14,8 +14,8 @@
 
 int main(int argc, char* argv[])
 {
-    int size_graph = 10;
-    float density_graph = 0.5;
+    int size_graph = 500;
+    float density_graph = 0.05;
     bool** adj_mat = bool2D(size_graph);
     float** weight_mat = float2D(size_graph);
     float* distance_from_start = new float[size_graph];
